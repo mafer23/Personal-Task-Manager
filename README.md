@@ -1,74 +1,155 @@
-<h1>📌 Gestor de Tareas Personal – Backend </h1>
+# 📌 Gestor de Tareas Personal – Backend
 
-Este repositorio contiene la implementación del backend.
-La API está desarrollada en NestJS, utiliza Prisma ORM para el manejo de datos y PostgreSQL como base de datos relacional.
+Este repositorio contiene la implementación **completa del backend** para la prueba técnica *Software Engineer Wagon*.  
+La API está desarrollada en **NestJS** con **Prisma ORM** y **PostgreSQL**, e incluye autenticación con **JWT**.
 
-🚀 Tecnologías Utilizadas
-<br>
-Lenguaje: TypeScript
+---
 
-Framework: NestJS
+## 🚀 Tecnologías Utilizadas
 
-ORM: Prisma
+- **Lenguaje**: TypeScript  
+- **Framework**: [NestJS](https://nestjs.com/)  
+- **ORM**: [Prisma](https://www.prisma.io/)  
+- **Base de Datos**: PostgreSQL  
+- **Autenticación**: JWT (JSON Web Tokens)  
+- **Gestor de Paquetes**: npm o yarn
 
-Base de Datos: PostgreSQL
+---
 
-Autenticación: JWT (JSON Web Tokens)
+## 📂 Estructura del Proyecto
 
-Contenerización: Docker
+/src
+├── app.module.ts # Módulo raíz
+├── main.ts # Punto de arranque
+├── auth/ # Registro, login y perfil
+├── tasks/ # CRUD de tareas
+├── users/ # Módulo de usuario
+├── prisma/ # Cliente y configuración de Prisma
+└── common/ # Middlewares y utilidades
+.env # Variables de entorno
+prisma/schema.prisma # Definición de modelos de datos
 
-Gestor de Paquetes: npm o yarn
-
-📂 Estructura del Proyecto
-
-<br>
-bash
-
-<br>
+markdown
 Copiar
-
-<br>
 Editar
 
-<br>
-/src
- ├── app.module.ts         # Módulo raíz
- ├── main.ts               # Punto de arranque de la app
- ├── auth/                 # Módulo de autenticación
- ├── tasks/                # Módulo de tareas
- ├── prisma/               # Cliente y configuración de Prisma
- └── common/               # Utilidades y middlewares
-.env                       # Variables de entorno
-prisma/schema.prisma       # Definición de modelos de datos
+## 🔑 Funcionalidades Implementadas
 
-<br>
-🔑 Funcionalidades
-Registro e inicio de sesión de usuarios.
+- **Autenticación y Autorización** con JWT.  
+- **Registro de usuario** (`/auth/signup`).  
+- **Inicio de sesión** (`/auth/login`).  
+- **Perfil de usuario autenticado** (`/auth/profile`).  
+- **Gestión de tareas**:
+  - Crear tarea (`POST /tasks`)
+  - Listar tareas (`GET /tasks`)
+  - Obtener tarea por ID (`GET /tasks/:id`)
+  - Actualizar tarea (`PUT /tasks/:id`)
+  - Eliminar tarea (`DELETE /tasks/:id`)
+  - Filtrar por estado (pendiente / completada)
+  - 
+## 📡 Endpoints
 
-Creación, consulta, actualización y eliminación de tareas.
+| Método | Endpoint         | Descripción                       | Autenticación |
+|--------|------------------|-----------------------------------|---------------|
+| POST   | `/auth/signup`   | Registro de usuario               | ❌ No         |
+| POST   | `/auth/login`    | Inicio de sesión                  | ❌ No         |
+| GET    | `/auth/profile`  | Datos del usuario autenticado     | ✅ Sí         |
+| GET    | `/tasks`         | Listar todas las tareas           | ✅ Sí         |
+| GET    | `/tasks/:id`     | Obtener tarea por ID              | ✅ Sí         |
+| POST   | `/tasks`         | Crear nueva tarea                 | ✅ Sí         |
+| PUT    | `/tasks/:id`     | Actualizar tarea                  | ✅ Sí         |
+| DELETE | `/tasks/:id`     | Eliminar tarea                    | ✅ Sí         |
 
-Filtro de tareas por estado (pendiente, completada).
+## 📄 Ejemplos de Requests y Responses
 
-Protección de rutas mediante autenticación JWT.
+### Registro de Usuario
+**Request**
+```json
+POST /auth/signup
+{
+  "email": "usuario@correo.com",
+  "password": "123456"
+}
+Response
 
-📡 Endpoints Principales
-Método	Endpoint	Descripción	Autenticación
-POST	/auth/signup	Registro de usuario	❌ No
-POST	/auth/login	Inicio de sesión	❌ No
-GET	/tasks	Listar todas las tareas	✅ Sí
-POST	/tasks	Crear una nueva tarea	✅ Sí
-PUT	/tasks/:id	Actualizar una tarea	✅ Sí
-DELETE	/tasks/:id	Eliminar una tarea	✅ Sí
+json
+Copiar
+Editar
+{
+  "id": 1,
+  "email": "usuario@correo.com",
+  "createdAt": "2025-08-09T12:00:00.000Z"
+}
+Inicio de Sesión
+Request
 
+json
+Copiar
+Editar
+POST /auth/login
+{
+  "email": "usuario@correo.com",
+  "password": "123456"
+}
+Response
+
+json
+Copiar
+Editar
+{
+  "access_token": "jwt_generado_aquí"
+}
+Perfil de Usuario
+Request
+
+sql
+Copiar
+Editar
+GET /auth/profile
+Authorization: Bearer <token_jwt>
+Response
+
+json
+Copiar
+Editar
+{
+  "id": 1,
+  "email": "usuario@correo.com",
+  "createdAt": "2025-08-09T12:00:00.000Z"
+}
+Crear Tarea
+Request
+
+json
+Copiar
+Editar
+POST /tasks
+Authorization: Bearer <token_jwt>
+{
+  "title": "Comprar pan",
+  "description": "Ir a la panadería antes de las 8 am"
+}
+Response
+
+json
+Copiar
+Editar
+{
+  "id": 5,
+  "title": "Comprar pan",
+  "description": "Ir a la panadería antes de las 8 am",
+  "status": "pending",
+  "createdAt": "2025-08-09T12:10:00.000Z"
+}
 ⚙️ Instalación y Ejecución
 1️⃣ Clonar repositorio
 bash
 Copiar
 Editar
-git clone 
+git clone https://github.com/usuario/gestor-tareas-backend.git
 cd gestor-tareas-backend
 2️⃣ Configurar variables de entorno
-Crear archivo .env en la raíz:
+Crear archivo .env:
 
 ini
 Copiar
@@ -86,25 +167,21 @@ bash
 Copiar
 Editar
 npx prisma migrate dev --name init
-5️⃣ Levantar servidor en desarrollo
+5️⃣ Levantar servidor
 bash
 Copiar
 Editar
 npm run start:dev
-
-🛠 Comandos útiles de Prisma
-Abrir el cliente de Prisma Studio:
+🛠 Comandos Prisma
+Abrir Prisma Studio
 
 bash
 Copiar
 Editar
 npx prisma studio
-Generar cliente de Prisma:
+Generar Cliente
 
 bash
 Copiar
 Editar
 npx prisma generate
-📄 Licencia
-Este proyecto es parte de una prueba técnica y no está destinado a uso comercial.
-
