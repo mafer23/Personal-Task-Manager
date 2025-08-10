@@ -4,6 +4,7 @@ Este repositorio contiene la implementación del backend.
 La API está desarrollada en NestJS, utiliza Prisma ORM para el manejo de datos y PostgreSQL como base de datos relacional.
 
 🚀 Tecnologías Utilizadas
+<br>
 Lenguaje: TypeScript
 
 Framework: NestJS
@@ -19,9 +20,17 @@ Contenerización: Docker
 Gestor de Paquetes: npm o yarn
 
 📂 Estructura del Proyecto
+
+<br>
 bash
+
+<br>
 Copiar
+
+<br>
 Editar
+
+<br>
 /src
  ├── app.module.ts         # Módulo raíz
  ├── main.ts               # Punto de arranque de la app
@@ -31,6 +40,8 @@ Editar
  └── common/               # Utilidades y middlewares
 .env                       # Variables de entorno
 prisma/schema.prisma       # Definición de modelos de datos
+
+<br>
 🔑 Funcionalidades
 Registro e inicio de sesión de usuarios.
 
@@ -54,7 +65,7 @@ DELETE	/tasks/:id	Eliminar una tarea	✅ Sí
 bash
 Copiar
 Editar
-git clone https://github.com/usuario/gestor-tareas-backend.git
+git clone 
 cd gestor-tareas-backend
 2️⃣ Configurar variables de entorno
 Crear archivo .env en la raíz:
