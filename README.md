@@ -18,23 +18,9 @@ La API está desarrollada en **NestJS** con **Prisma ORM** y **PostgreSQL**, e i
 
 ## 📂 Estructura del Proyecto
 
-/src
-├── app.module.ts # Módulo raíz
-├── main.ts # Punto de arranque
-├── auth/ # Registro, login y perfil
-├── tasks/ # CRUD de tareas
-├── users/ # Módulo de usuario
-├── prisma/ # Cliente y configuración de Prisma
-└── common/ # Middlewares y utilidades
-.env # Variables de entorno
-prisma/schema.prisma # Definición de modelos de datos
+<img width="318" height="192" alt="image" src="https://github.com/user-attachments/assets/fd508376-a738-4815-baec-a39a1ddce412" />
 
-Copiar
-Editar
 
-markdown
-Copiar
-Editar
 
 ## 🔑 Funcionalidades Implementadas
 
@@ -54,8 +40,8 @@ Editar
 
 | Método | Endpoint         | Descripción                       | Autenticación |
 |--------|------------------|-----------------------------------|---------------|
-| POST   | `/auth/signup`   | Registro de usuario               | ❌ No         |
-| POST   | `/auth/login`    | Inicio de sesión                  | ❌ No         |
+| POST   | `/auth/signup`   | Registro de usuario               | ✅ Sí         |
+| POST   | `/auth/login`    | Inicio de sesión                  | ✅ Sí         |
 | GET    | `/auth/profile`  | Datos del usuario autenticado     | ✅ Sí         |
 | GET    | `/tasks`         | Listar todas las tareas           | ✅ Sí         |
 | GET    | `/tasks/:id`     | Obtener tarea por ID              | ✅ Sí         |
