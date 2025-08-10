@@ -1,5 +1,6 @@
-📌 Gestor de Tareas Personal – Backend
-Este repositorio contiene la implementación del backend para la prueba técnica Software Engineer Wagon.
+<h1>📌 Gestor de Tareas Personal – Backend </h1>
+
+Este repositorio contiene la implementación del backend.
 La API está desarrollada en NestJS, utiliza Prisma ORM para el manejo de datos y PostgreSQL como base de datos relacional.
 
 🚀 Tecnologías Utilizadas
