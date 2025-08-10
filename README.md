@@ -29,6 +29,9 @@ La API está desarrollada en **NestJS** con **Prisma ORM** y **PostgreSQL**, e i
 .env # Variables de entorno
 prisma/schema.prisma # Definición de modelos de datos
 
+Copiar
+Editar
+
 markdown
 Copiar
 Editar
