@@ -51,12 +51,6 @@ La API está desarrollada en **NestJS** con **Prisma ORM** y **PostgreSQL**, e i
 
 
 ## 📄 Ejemplos de Requests y Responses
-
-## 📄 Ejemplos de Requests y Responses
-
----
-
-### Registro de Usuario
 **Request**
 ```json
 POST /auth/signup
