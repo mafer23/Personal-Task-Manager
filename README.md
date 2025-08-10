@@ -61,3 +61,45 @@ Response
   "email": "usuario@correo.com",
   "createdAt": "2025-08-09T12:00:00.000Z"
 }
+Inicio de Sesión
+Request
+POST /auth/login
+{
+  "email": "usuario@correo.com",
+  "password": "123456"
+}
+Response
+
+{
+  "access_token": "jwt_generado_aquí"
+}
+Perfil de Usuario
+Request
+
+GET /auth/profile
+Authorization: Bearer <token_jwt>
+Response
+
+{
+  "id": 1,
+  "email": "usuario@correo.com",
+  "createdAt": "2025-08-09T12:00:00.000Z"
+}
+Crear Tarea
+Request
+
+POST /tasks
+Authorization: Bearer <token_jwt>
+{
+  "title": "Comprar pan",
+  "description": "Ir a la panadería antes de las 8 am"
+}
+Response
+
+{
+  "id": 5,
+  "title": "Comprar pan",
+  "description": "Ir a la panadería antes de las 8 am",
+  "status": "pending",
+  "createdAt": "2025-08-09T12:10:00.000Z"
+}
